@@ -205,5 +205,3 @@ window.calculate = calculate;
 function toggleA() { R('amortW').classList.toggle('open'); }
 window.toggleA = toggleA;
 
-/* ── Initial calculation on load ────────────────────── */
-document.addEventListener('DOMContentLoaded', calculate);

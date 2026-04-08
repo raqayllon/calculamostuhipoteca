@@ -28,7 +28,12 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 .nav-links{display:flex;gap:28px}
 .nav-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s}
 .nav-links a:hover,.nav-links a.active{color:#fff}
-@media(max-width:640px){.nav-links{display:none}}
+@media(max-width:640px){
+  .nav{padding:0 14px}
+  .nav-links{gap:14px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;mask-image:linear-gradient(90deg,transparent,#fff 10%,#fff 90%,transparent)}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{white-space:nowrap;font-size:12px}
+}
 
 /* ====== HERO ====== */
 .hero{background:linear-gradient(165deg,var(--navy) 0%,var(--navy-dark) 100%);padding:48px 24px 64px;text-align:center;color:#fff;position:relative;overflow:hidden}
