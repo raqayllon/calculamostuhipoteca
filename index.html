@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Hipoteca 2026 — calculamostuhipoteca.com</title>
+<meta name="description" content="Simulador completo de hipoteca: cuota mensual, TAE, gastos de compra, seguros e impuestos. La calculadora hipotecaria más completa de España.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Calculadora de Hipoteca 2026 — calculamostuhipoteca.com">
+<meta property="og:description" content="Calcula tu cuota mensual, TAE real, gastos de compra, seguros e impuestos. La calculadora hipotecaria más completa de España.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#" class="nav-brand">
+    <svg class="nav-logo" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M6 18L18 7L30 18V31H6V18Z" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M14 31V22H22V31" stroke="#0D9488" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    calculamostuhipoteca.com
+  </a>
+  <nav class="nav-links" aria-label="Navegación principal">
+    <a href="#">Calculadora</a>
+    <a href="#">Guía hipotecaria</a>
+    <a href="#">Comparar hipotecas</a>
+  </nav>
+</nav>
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-pill"><span class="pulse" aria-hidden="true"></span> Simulador actualizado · Abril 2026</div>
+    <h1>Calcula tu hipoteca<br>al céntimo</h1>
+    <p>Cuota mensual, TAE real, gastos de compra, seguros vinculados y amortización. Todo antes de pisar el banco.</p>
+  </div>
+</header>
+
+<div class="ad-banner" aria-label="Publicidad">
+  <div class="ad-banner-inner">
+    <div class="ad-banner-text">Tu anuncio aquí — Contacta para patrocinio</div>
+    <div class="ad-banner-size">728 × 90 · Leaderboard</div>
+  </div>
+</div>
+
+<main class="main-wrap">
+<div class="grid">
+
+<!-- ═══ LEFT COLUMN ═══ -->
+<div>
+
+  <!-- CARD 1: Vivienda -->
+  <div class="card" style="margin-bottom:22px">
+    <div class="card-head">
+      <div class="card-icon navy" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B2E4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 10L12 3L21 10"/><path d="M5 10V20H19V10"/><rect x="9" y="14" width="6" height="6"/>
+        </svg>
+      </div>
+      <div>
+        <h2>La vivienda</h2>
+        <div class="step">Paso 1 de 2</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="form-grid">
+
+        <div class="field">
+          <label for="price">Precio de compra
+            <span class="tip-icon" tabindex="0" aria-label="El precio de compraventa que figura en la escritura pública">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><circle cx="12" cy="8" r=".5" fill="currentColor"/></svg>
+              <span class="tip-pop" role="tooltip">Precio de compraventa que figura en la escritura pública.</span>
+            </span>
+          </label>
+          <div class="input-wrap">
+            <input type="text" id="price" value="250.000" inputmode="numeric" aria-label="Precio de compra en euros">
+            <span class="input-suffix" aria-hidden="true">€</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="down">Ahorros / Entrada</label>
+          <div class="input-wrap">
+            <input type="text" id="down" value="50.000" inputmode="numeric" aria-label="Entrada o ahorros en euros">
+            <span class="input-suffix" aria-hidden="true">€</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="homeType">Tipo de vivienda</label>
+          <div class="select-wrap">
+            <select id="homeType">
+              <option value="existing">Segunda mano</option>
+              <option value="new">Obra nueva (promotor)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="region">Comunidad autónoma</label>
+          <div class="select-wrap">
+            <select id="region">
+              <option value="general">General (10% ITP)</option>
+              <option value="cataluna">Cataluña (10%)</option>
+              <option value="madrid">Madrid (6%)</option>
+              <option value="andalucia">Andalucía (7%)</option>
+              <option value="valencia">C. Valenciana (10%)</option>
+              <option value="pais_vasco">País Vasco (4%)</option>
+              <option value="canarias">Canarias (6,5% IGIC)</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: Préstamo -->
+  <div class="card" style="margin-bottom:22px">
+    <div class="card-head">
+      <div class="card-icon gold" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B8860B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10H22"/><path d="M6 14H10"/>
+        </svg>
+      </div>
+      <div>
+        <h2>Condiciones del préstamo</h2>
+        <div class="step">Paso 2 de 2</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="form-grid">
+
+        <div class="field">
+          <label for="rate">TIN anual
+            <span class="tip-icon" tabindex="0" aria-label="Tipo de Interés Nominal: lo que cobra el banco por el préstamo, sin comisiones ni gastos">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><circle cx="12" cy="8" r=".5" fill="currentColor"/></svg>
+              <span class="tip-pop" role="tooltip">Tipo de Interés Nominal: lo que cobra el banco por el préstamo, sin comisiones ni gastos.</span>
+            </span>
+          </label>
+          <div class="range-row">
+            <input type="range" id="rate" min="1" max="7" step="0.05" value="2.50" aria-label="TIN anual">
+            <span class="range-val" id="rateVal" aria-live="polite">2,50 %</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="years">Plazo</label>
+          <div class="range-row">
+            <input type="range" id="years" min="5" max="40" step="1" value="25" aria-label="Plazo en años">
+            <span class="range-val" id="yearsVal" aria-live="polite">25 años</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="openFee">Comisión apertura
+            <span class="tip-icon" tabindex="0" aria-label="Porcentaje sobre el capital que cobra el banco al firmar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><circle cx="12" cy="8" r=".5" fill="currentColor"/></svg>
+              <span class="tip-pop" role="tooltip">Porcentaje sobre el capital que cobra el banco al firmar. Muchos ya no lo cobran.</span>
+            </span>
+          </label>
+          <div class="range-row">
+            <input type="range" id="openFee" min="0" max="2" step="0.1" value="0" aria-label="Comisión de apertura">
+            <span class="range-val" id="openFeeVal" aria-live="polite">0,0 %</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="mortgageType">Modalidad</label>
+          <div class="select-wrap">
+            <select id="mortgageType">
+              <option value="fixed">Tipo fijo</option>
+              <option value="variable">Tipo variable</option>
+              <option value="mixed">Tipo mixto</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Seguros -->
+      <button class="collapse-btn" id="advTrigger" onclick="toggleC('adv')" aria-expanded="false" aria-controls="advBody">
+        <span>Seguros y productos vinculados</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="collapse-body" id="advBody">
+        <div class="toggle-row">
+          <div class="toggle-label">
+            Seguro de hogar
+            <small>Obligatorio — ~300–600 €/año</small>
+          </div>
+          <label class="switch" aria-label="Activar seguro de hogar">
+            <input type="checkbox" id="homeIns" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="form-grid" style="margin-top:12px">
+          <div class="field">
+            <label for="homeInsCost">Coste anual hogar</label>
+            <div class="input-wrap">
+              <input type="text" id="homeInsCost" value="400" inputmode="numeric">
+              <span class="input-suffix" aria-hidden="true">€</span>
+            </div>
+          </div>
+          <div class="field">&nbsp;</div>
+        </div>
+
+        <div class="toggle-row" style="margin-top:8px">
+          <div class="toggle-label">
+            Seguro de vida
+            <small>Bonifica entre 0,10% y 0,50% del TIN</small>
+          </div>
+          <label class="switch" aria-label="Activar seguro de vida">
+            <input type="checkbox" id="lifeIns">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="form-grid" style="margin-top:12px">
+          <div class="field">
+            <label for="lifeInsCost">Coste anual vida</label>
+            <div class="input-wrap">
+              <input type="text" id="lifeInsCost" value="600" inputmode="numeric">
+              <span class="input-suffix" aria-hidden="true">€</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="discount">Bonificación TIN
+              <span class="tip-icon" tabindex="0" aria-label="Descuento en el TIN que aplica el banco si contratas sus seguros">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><circle cx="12" cy="8" r=".5" fill="currentColor"/></svg>
+                <span class="tip-pop" role="tooltip">Descuento en el TIN que aplica el banco si contratas sus seguros.</span>
+              </span>
+            </label>
+            <div class="range-row">
+              <input type="range" id="discount" min="0" max="1" step="0.05" value="0" aria-label="Bonificación TIN">
+              <span class="range-val" id="discountVal" aria-live="polite">0,00 %</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn-calc" onclick="calculate()" aria-label="Calcular hipoteca">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+      <rect x="4" y="4" width="16" height="16" rx="2"/>
+      <line x1="8" y1="8" x2="16" y2="8"/>
+      <line x1="8" y1="12" x2="10" y2="12"/>
+      <line x1="14" y1="12" x2="16" y2="12"/>
+      <line x1="8" y1="16" x2="10" y2="16"/>
+      <line x1="14" y1="16" x2="16" y2="16"/>
+    </svg>
+    Calcular hipoteca completa
+  </button>
+
+  <div class="ad-inline" aria-label="Publicidad">
+    <div class="ad-banner-text">Espacio patrocinado — 468 × 60</div>
+    <div class="ad-banner-size">Ideal para brokers hipotecarios y comparadores</div>
+  </div>
+
+</div>
+
+<!-- ═══ RIGHT COLUMN ═══ -->
+<div class="sidebar-sticky">
+
+  <!-- RESULTS PANEL -->
+  <div class="card results-panel" id="results" aria-live="polite">
+    <div class="result-hero">
+      <div class="rlabel">Tu cuota mensual</div>
+      <div class="ramount" id="monthly">—</div>
+      <div class="rsub" id="termSub">durante 25 años · TIN 2,50%</div>
+    </div>
+    <div class="result-body">
+      <div class="divider">Resumen del préstamo</div>
+
+      <div class="mrow">
+        <span class="mrow-label">Capital solicitado</span>
+        <span class="mrow-val" id="rLoan">—</span>
+      </div>
+      <div class="mrow">
+        <span class="mrow-label">TIN aplicado</span>
+        <span class="mrow-val" id="rTIN">—</span>
+      </div>
+      <div class="mrow">
+        <span class="mrow-label">TAE estimada
+          <span class="tip-icon" style="margin-left:3px" tabindex="0" aria-label="Incluye TIN, comisión apertura y seguros vinculados">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><circle cx="12" cy="8" r=".5" fill="currentColor"/></svg>
+            <span class="tip-pop" style="width:200px" role="tooltip">Incluye TIN + comisión apertura + seguros vinculados.</span>
+          </span>
+        </span>
+        <span class="mrow-val gold" id="rTAE">—</span>
+      </div>
+      <div class="mrow">
+        <span class="mrow-label">Total intereses</span>
+        <span class="mrow-val coral" id="rInterest">—</span>
+      </div>
+      <div class="mrow">
+        <span class="mrow-label">Total a devolver</span>
+        <span class="mrow-val" id="rTotal">—</span>
+      </div>
+
+      <!-- Bar chart -->
+      <div class="bar-chart" aria-label="Distribución de pagos">
+        <div class="brow">
+          <span class="brow-label">Capital</span>
+          <div class="brow-track"><div class="brow-fill" id="barCap" style="width:0;background:var(--navy)"></div></div>
+          <span class="brow-amt" id="barCapA">—</span>
+        </div>
+        <div class="brow">
+          <span class="brow-label">Intereses</span>
+          <div class="brow-track"><div class="brow-fill" id="barInt" style="width:0;background:var(--gold)"></div></div>
+          <span class="brow-amt" id="barIntA">—</span>
+        </div>
+        <div class="brow" id="barInsR" style="display:none">
+          <span class="brow-label">Seguros</span>
+          <div class="brow-track"><div class="brow-fill" id="barIns" style="width:0;background:var(--teal)"></div></div>
+          <span class="brow-amt" id="barInsA">—</span>
+        </div>
+      </div>
+
+      <div class="divider">Gastos de compra</div>
+
+      <div class="mrow">
+        <span class="mrow-label" id="taxLabel">ITP (10%)</span>
+        <span class="mrow-val" id="rTax">—</span>
+      </div>
+      <div class="mrow">
+        <span class="mrow-label">Notaría + Registro</span>
+        <span class="mrow-val" id="rNotary">—</span>
+      </div>
+      <div class="mrow">
+        <span class="mrow-label">Gestoría</span>
+        <span class="mrow-val" id="rGest">—</span>
+      </div>
+      <div class="mrow">
+        <span class="mrow-label">Tasación</span>
+        <span class="mrow-val" id="rTas">—</span>
+      </div>
+      <div class="mrow">
+        <span class="mrow-label">Comisión apertura</span>
+        <span class="mrow-val" id="rOpen">—</span>
+      </div>
+      <div class="mrow" style="border-top:2px solid var(--border);padding-top:14px;margin-top:6px">
+        <span class="mrow-label" style="font-weight:700;color:var(--ink)">Total gastos iniciales</span>
+        <span class="mrow-val coral" id="rCosts">—</span>
+      </div>
+
+      <!-- Savings tip -->
+      <div class="tip-box" role="note">
+        <div class="tip-box-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+          </svg>
+          Necesitas tener ahorrado
+        </div>
+        <p>Entrada (<span id="tipD">—</span>) + gastos (<span id="tipC">—</span>) = <strong id="tipT">—</strong></p>
+      </div>
+
+      <!-- Amortisation -->
+      <button class="amort-btn" onclick="toggleA()" aria-expanded="false" aria-controls="amortW">
+        Ver amortización anual ▾
+      </button>
+      <div class="amort-wrap" id="amortW">
+        <table class="amort-tbl">
+          <thead>
+            <tr>
+              <th scope="col">Año</th>
+              <th scope="col">Capital</th>
+              <th scope="col">Intereses</th>
+              <th scope="col">Amortizado</th>
+              <th scope="col">Pendiente</th>
+            </tr>
+          </thead>
+          <tbody id="amortB"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIDEBAR AD -->
+  <div class="ad-sidebar" aria-label="Publicidad">
+    <div class="ad-sidebar-inner">
+      <div class="ad-banner-text">Tu anuncio aquí</div>
+      <div class="ad-banner-size">300 × 250 · Medium Rectangle</div>
+    </div>
+  </div>
+
+  <!-- COMPARE CTA -->
+  <div class="compare-card">
+    <div class="compare-badge">
+      <svg class="sparkle" width="12" height="12" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/></svg>
+      Recomendado
+    </div>
+    <h3>Compara hipotecas de 20+ bancos</h3>
+    <p class="compare-sub">Calcula en 1 minuto gratis cuál es la mejor hipoteca para ti. Ofertas reales y personalizadas.</p>
+    <ul class="compare-features">
+      <li>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5L19 7"/></svg>
+        100% online, gratis y sin compromiso
+      </li>
+      <li>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5L19 7"/></svg>
+        Resultado en menos de 1 minuto
+      </li>
+      <li>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12l5 5L19 7"/></svg>
+        Asesor hipotecario personal incluido
+      </li>
+    </ul>
+    <button class="compare-btn" onclick="window.open('#','_blank')">
+      Comparar hipotecas gratis
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+
+  <!-- INFO CARD -->
+  <div class="info-card">
+    <h4>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+        <path d="M2 17l10 5 10-5"/>
+        <path d="M2 12l10 5 10-5"/>
+      </svg>
+      Regla del 35%
+    </h4>
+    <p>Tu cuota hipotecaria no debería superar el 35% de tus ingresos netos mensuales. Es el criterio que usan los bancos para aprobar tu solicitud.</p>
+  </div>
+
+</div>
+</div>
+</main>
+
+<div class="ad-banner" aria-label="Publicidad">
+  <div class="ad-banner-inner">
+    <div class="ad-banner-text">Tu anuncio aquí — Contacta para patrocinio</div>
+    <div class="ad-banner-size">728 × 90 · Leaderboard</div>
+  </div>
+</div>
+
+<section class="seo-area" aria-label="Guía sobre hipotecas">
+  <div class="seo-card">
+    <h2>¿Cómo funciona esta calculadora hipotecaria?</h2>
+    <p>Nuestro simulador utiliza el sistema de amortización francés (cuota fija mensual), el estándar en España, y va mucho más allá del TIN: calcula la TAE real incluyendo comisión de apertura y coste de seguros vinculados, estima todos los gastos de compra según tu comunidad autónoma y tipo de vivienda, y genera una tabla de amortización completa año a año.</p>
+
+    <h3>TIN vs TAE: la diferencia que importa</h3>
+    <p>El TIN (Tipo de Interés Nominal) es el porcentaje puro del préstamo. La TAE (Tasa Anual Equivalente) refleja el coste real porque incluye comisiones, seguros y gastos vinculados. Dos hipotecas con el mismo TIN pueden tener TAE muy diferentes. Fíjate siempre en la TAE para comparar ofertas.</p>
+
+    <h3>ITP vs IVA: ¿qué impuesto pago?</h3>
+    <p>Vivienda de segunda mano: pagas ITP (entre el 4% y el 10% según tu comunidad autónoma). Vivienda nueva de promotor: pagas IVA (10%) más AJD (entre 0,5% y 1,5% según CCAA). Nuestra calculadora ajusta los impuestos automáticamente según tu selección.</p>
+
+    <h3>¿Cuánto financian los bancos en 2026?</h3>
+    <p>Generalmente hasta el 80% del menor valor entre tasación y precio de compra. Necesitas tener ahorrado al menos el 20% de entrada más un 10-12% adicional para impuestos y gastos. Algunos bancos ofrecen hasta el 90% para primera vivienda habitual.</p>
+
+    <h3>¿Merece la pena vincular seguros?</h3>
+    <p>Los bancos bonifican el TIN (entre 0,10% y 0,50% menos) si contratas seguro de hogar y de vida con ellos. Usa nuestra calculadora para comparar ambos escenarios: a veces la bonificación compensa, pero no siempre. El seguro de hogar es obligatorio; el de vida no, pero casi todos los bancos lo exigen para darte la mejor oferta.</p>
+
+    <h3>Amortización anticipada</h3>
+    <p>Sí, puedes amortizar parcial o totalmente. Las comisiones máximas legales son: tipo variable, 0,25% los 3 primeros años o 0,15% después; tipo fijo, 2% los primeros 10 años o 1,5% después (Ley 5/2019). Amortizar pronto ahorra más intereses porque reduces capital cuando su peso es mayor.</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>© 2026 calculamostuhipoteca.com · Esta herramienta es orientativa y no constituye asesoramiento financiero.</p>
+  <p>Consulta con tu entidad bancaria o un asesor hipotecario profesional.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
