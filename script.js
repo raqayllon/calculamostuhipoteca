@@ -195,9 +195,7 @@ function calculate() {
   void panel.offsetWidth; // force reflow for re-animation
   panel.classList.add('visible');
 
-  if (window.innerWidth <= 880) {
-    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
+  setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
 }
 window.calculate = calculate;
 

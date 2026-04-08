@@ -13,9 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5781805243086278"
-     crossorigin="anonymous"></script>
+<!-- AdSense se carga condicionalmente tras aceptar cookies (ver cookies.js) -->
 </head>
 <body>
 
@@ -28,9 +26,9 @@
     calculamostuhipoteca.com
   </a>
   <nav class="nav-links" aria-label="Navegación principal">
-    <a href="#">Calculadora</a>
-    <a href="#">Guía hipotecaria</a>
+    <a href="index.html">Calculadora</a>
     <a href="comparar-hipotecas.html">Comparar hipotecas</a>
+    <a href="aviso-legal.html">Legal</a>
   </nav>
 </nav>
 
@@ -254,8 +252,8 @@
 
 </div>
 
-<!-- ═══ RIGHT COLUMN ═══ -->
-<div class="sidebar-sticky">
+<!-- ═══ RESULTS + CTA ═══ -->
+<div>
 
   <!-- RESULTS PANEL -->
   <div class="card results-panel" id="results" aria-live="polite">
@@ -371,6 +369,7 @@
     </div>
   </div>
 
+  <div class="cta-row">
   <!-- COMPARE CTA -->
   <div class="compare-card">
     <div class="compare-badge">
@@ -411,6 +410,7 @@
     </h4>
     <p>Tu cuota hipotecaria no debería superar el 35% de tus ingresos netos mensuales. Es el criterio que usan los bancos para aprobar tu solicitud.</p>
   </div>
+  </div><!-- /cta-row -->
 
 </div>
 </div>
@@ -445,5 +445,20 @@
 </footer>
 
 <script src="script.js"></script>
+<script src="cookies.js"></script>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Aviso de cookies">
+  <div class="cookie-inner">
+    <div class="cookie-msg">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><circle cx="12" cy="16" r=".5" fill="currentColor"/></svg>
+      <p>Usamos cookies de terceros (Google AdSense) para mostrarte publicidad relevante. <a href="aviso-legal.html">Más información</a></p>
+    </div>
+    <div class="cookie-btns">
+      <button class="cookie-btn-reject" onclick="rejectCookies()">Solo necesarias</button>
+      <button class="cookie-btn-accept" onclick="acceptCookies()">Aceptar todo</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
