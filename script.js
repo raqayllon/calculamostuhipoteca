@@ -195,11 +195,17 @@ function calculate() {
   void panel.offsetWidth; // force reflow for re-animation
   panel.classList.add('visible');
 
-  setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+  /* on mobile (single column) scroll results into view */
+  if (window.innerWidth <= 860) {
+    setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+  }
 }
 window.calculate = calculate;
 
 /* ── Toggle amortisation ───────────────────────────── */
 function toggleA() { R('amortW').classList.toggle('open'); }
 window.toggleA = toggleA;
+
+/* ── Auto-calculate with market defaults on load ─── */
+document.addEventListener('DOMContentLoaded', calculate);
 
