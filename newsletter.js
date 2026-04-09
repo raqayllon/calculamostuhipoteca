@@ -80,7 +80,7 @@ function nlIdxSubscribe() {
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Por favor, introduce un email válido.'); return; }
   if (!c1) { alert('Debes aceptar la política de privacidad.'); return; }
   if (!c2) { alert('Debes aceptar recibir la newsletter para suscribirte.'); return; }
-  var btn = document.querySelector('#nl-idx-form .nl-art-btn');
+  var btn = document.querySelector('#nl-idx-form .nl-idx-btn');
   btn.disabled = true; btn.textContent = 'Enviando…';
   _nlPost(email, name, function() {
     document.getElementById('nl-idx-form').style.display = 'none';
