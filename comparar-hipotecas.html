@@ -532,6 +532,7 @@
   <p style="margin-top:8px"><a href="aviso-legal.html" style="color:var(--ink-muted);text-decoration:underline">Aviso legal y privacidad</a></p>
 </footer>
 
+<script src="brevo-config.js"></script>
 <script src="comparar.js"></script>
 <script src="cookies.js"></script>
 <script>
@@ -543,12 +544,25 @@ function nlSubscribe(){
   if(!name){alert('Por favor, introduce tu nombre.');return;}
   if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){alert('Por favor, introduce un email válido.');return;}
   if(!consent){alert('Debes aceptar la política de privacidad para continuar.');return;}
-  // TODO: Conectar con Mailchimp / Brevo / ConvertKit
-  var subs=JSON.parse(localStorage.getItem('nlSubs')||'[]');
-  subs.push({name:name,email:email,phase:phase,date:new Date().toISOString()});
-  localStorage.setItem('nlSubs',JSON.stringify(subs));
-  document.getElementById('nl-form-area').style.display='none';
-  document.getElementById('nl-success').style.display='block';
+  var btn=document.querySelector('#nl-form-area .btn-lead');
+  btn.disabled=true;
+  btn.textContent='Enviando…';
+  fetch('https://api.brevo.com/v3/contacts',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','api-key':window.BREVO_API_KEY||''},
+    body:JSON.stringify({email:email,attributes:{FIRSTNAME:name,SMS:phase},updateEnabled:true})
+  }).then(function(r){
+    if(r.ok||r.status===204||r.status===201){
+      document.getElementById('nl-form-area').style.display='none';
+      document.getElementById('nl-success').style.display='block';
+    } else {
+      return r.json().then(function(d){throw new Error(d.message||'Error');});
+    }
+  }).catch(function(){
+    btn.disabled=false;
+    btn.innerHTML='Suscribirme gratis <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+    alert('Hubo un problema. Inténtalo de nuevo en unos segundos.');
+  });
 }
 </script>
 

@@ -232,6 +232,7 @@
   <p>© 2026 calculamostuhipoteca.com · <a href="aviso-legal.html" style="color:var(--ink-muted);text-decoration:underline">Aviso legal y privacidad</a></p>
 </footer>
 
+<script src="brevo-config.js"></script>
 <script src="cookies.js"></script>
 <script>
 function nlHubSubscribe(){
@@ -241,12 +242,25 @@ function nlHubSubscribe(){
   if(!name){alert('Por favor, introduce tu nombre.');return;}
   if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){alert('Por favor, introduce un email válido.');return;}
   if(!consent){alert('Debes aceptar la política de privacidad para continuar.');return;}
-  // TODO: Conectar con Mailchimp / Brevo / ConvertKit
-  var subs=JSON.parse(localStorage.getItem('nlSubs')||'[]');
-  subs.push({name:name,email:email,phase:'guia',date:new Date().toISOString()});
-  localStorage.setItem('nlSubs',JSON.stringify(subs));
-  document.getElementById('nl-hub-form').style.display='none';
-  document.getElementById('nl-hub-success').style.display='block';
+  var btn=document.querySelector('#nl-hub-form .nl-btn');
+  btn.disabled=true;
+  btn.textContent='Enviando…';
+  fetch('https://api.brevo.com/v3/contacts',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','api-key':window.BREVO_API_KEY||''},
+    body:JSON.stringify({email:email,attributes:{FIRSTNAME:name},updateEnabled:true})
+  }).then(function(r){
+    if(r.ok||r.status===204||r.status===201){
+      document.getElementById('nl-hub-form').style.display='none';
+      document.getElementById('nl-hub-success').style.display='block';
+    } else {
+      return r.json().then(function(d){throw new Error(d.message||'Error');});
+    }
+  }).catch(function(){
+    btn.disabled=false;
+    btn.textContent='Suscribirme';
+    alert('Hubo un problema. Inténtalo de nuevo en unos segundos.');
+  });
 }
 </script>
 
