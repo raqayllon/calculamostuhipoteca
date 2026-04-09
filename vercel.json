@@ -1,4 +1,6 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "buildCommand": "printf 'window.BREVO_API_KEY=\"%s\";\\n' \"$BREVO_API_KEY\" > brevo-config.js",
+  "outputDirectory": "."
 }
