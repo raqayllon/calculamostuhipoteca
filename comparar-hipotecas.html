@@ -443,72 +443,37 @@
   </p>
 
   <!-- NEWSLETTER -->
-  <div class="lead-wrap" id="newsletter">
-    <div class="lead-card">
-      <div id="nl-form-area">
-        <h2>Recibe la guía hipotecaria en tu email</h2>
-        <p>Comparativas actualizadas, alertas del Euríbor y consejos prácticos. Solo lo que importa, sin spam.</p>
-        <div class="frow">
-          <div class="ff"><label for="nlName">Nombre</label><input type="text" id="nlName" placeholder="Tu nombre" autocomplete="given-name"></div>
-          <div class="ff"><label for="nlEmail">Email</label><input type="email" id="nlEmail" placeholder="tu@email.com" autocomplete="email"></div>
-        </div>
-        <div class="frow" style="grid-template-columns:1fr">
-          <div class="ff">
-            <label for="nlPhase">¿En qué fase estás?</label>
-            <select id="nlPhase">
-              <option value="buscando">Buscando vivienda</option>
-              <option value="negociando">Negociando con el banco</option>
-              <option value="firmando">A punto de firmar</option>
-              <option value="revisando">Revisando mi hipoteca actual</option>
-              <option value="informandome">Solo me informo</option>
-            </select>
-          </div>
-        </div>
-        <label class="consent">
-          <input type="checkbox" id="nlConsent1">
-          He leído y acepto la <a href="aviso-legal.html" target="_blank" style="color:var(--teal)">política de privacidad</a> y el tratamiento de mis datos personales para gestionar mi suscripción.
-        </label>
-        <label class="consent">
-          <input type="checkbox" id="nlConsent2">
-          Acepto recibir la newsletter de calculamostuhipoteca.com con comparativas, alertas del Euríbor y artículos sobre hipotecas. Puedo darme de baja en cualquier momento sin coste.
-        </label>
-        <button class="btn-lead" type="button" onclick="nlSubscribe()">
-          Suscribirme gratis
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
+  <div class="nl-wrap" id="newsletter">
+    <div class="nl-art-inner">
+      <div class="nl-art-left">
+        <span class="nl-art-tag">Newsletter semanal</span>
+        <h2 style="color:#fff;font-family:'Outfit',sans-serif;font-weight:800;font-size:26px;line-height:1.3;margin:0 0 18px">Cuando baje el Euríbor,<br>sé el primero en saberlo</h2>
+        <ul class="nl-art-perks">
+          <li>Alertas cuando el Euríbor cambia de tendencia</li>
+          <li>Las hipotecas con mejor TIN/TAE del mes</li>
+          <li>Estrategias para negociar con tu banco</li>
+          <li>Solo lo útil, sin spam</li>
+        </ul>
+        <p class="nl-art-trust">Sin spam · Baja cuando quieras · Gratis</p>
       </div>
-      <div id="nl-success" style="display:none;text-align:center;padding:40px 0">
-        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="1.5" stroke-linecap="round" style="margin-bottom:16px;display:block;margin-left:auto;margin-right:auto"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
-        <h3 style="font-size:20px;color:var(--navy);margin-bottom:8px">¡Suscripción confirmada!</h3>
-        <p style="color:var(--ink-soft);font-size:14px;max-width:320px;margin:0 auto">Gracias por unirte. Recibirás la comparativa del mes y los mejores consejos hipotecarios directamente en tu email.</p>
-      </div>
-    </div>
-
-    <div class="benefits">
-      <h3>¿Qué recibirás?</h3>
-      <div class="ben">
-        <div class="ben-icon" style="background:var(--teal-light)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <div class="nl-art-right">
+        <div id="nl-form-area">
+          <input type="text" id="nlName" placeholder="Tu nombre" autocomplete="given-name">
+          <input type="email" id="nlEmail" placeholder="tu@email.com" autocomplete="email">
+          <label class="nl-art-ck">
+            <input type="checkbox" id="nlConsent1">
+            <span>He leído y acepto la <a href="aviso-legal.html">política de privacidad</a> y el tratamiento de mis datos para gestionar mi suscripción.</span>
+          </label>
+          <label class="nl-art-ck">
+            <input type="checkbox" id="nlConsent2">
+            <span>Acepto recibir la newsletter de calculamostuhipoteca.com. Me puedo dar de baja en cualquier momento sin coste.</span>
+          </label>
+          <button class="nl-art-btn" onclick="nlSubscribe()">Quiero saberlo antes que nadie →</button>
         </div>
-        <div><h4>Comparativa mensual</h4><p>Las mejores hipotecas actualizadas cada mes con los tipos reales.</p></div>
-      </div>
-      <div class="ben">
-        <div class="ben-icon" style="background:var(--gold-light)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B8860B" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <div id="nl-success" style="display:none;text-align:center;padding:24px 0">
+          <p style="color:#2dd4bf;font-size:16px;font-weight:700;margin-bottom:6px">¡Listo! Ya estás en la lista.</p>
+          <p style="color:rgba(255,255,255,.6);font-size:13px">El próximo martes recibirás tu primera newsletter.</p>
         </div>
-        <div><h4>Alertas del Euríbor</h4><p>Aviso cuando el Euríbor baje para que aproveches el momento y negocies.</p></div>
-      </div>
-      <div class="ben">
-        <div class="ben-icon" style="background:var(--navy-light)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B2E4A" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-        </div>
-        <div><h4>Guía hipotecaria</h4><p>TIN, TAE, gastos, negociación… todo lo que necesitas saber explicado sin jerga.</p></div>
-      </div>
-      <div class="ben">
-        <div class="ben-icon" style="background:var(--teal-light)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <div><h4>Sin spam, sin ventas</h4><p>Solo contenido útil. Baja cuando quieras con un clic.</p></div>
       </div>
     </div>
   </div>
@@ -536,41 +501,9 @@
   <p style="margin-top:8px"><a href="aviso-legal.html" style="color:var(--ink-muted);text-decoration:underline">Aviso legal y privacidad</a></p>
 </footer>
 
-<script src="brevo-config.js"></script>
+<script src="newsletter.js"></script>
 <script src="comparar.js"></script>
 <script src="cookies.js"></script>
-<script>
-function nlSubscribe(){
-  var name=document.getElementById('nlName').value.trim();
-  var email=document.getElementById('nlEmail').value.trim();
-  var phase=document.getElementById('nlPhase').value;
-  var consent1=document.getElementById('nlConsent1').checked;
-  var consent2=document.getElementById('nlConsent2').checked;
-  if(!name){alert('Por favor, introduce tu nombre.');return;}
-  if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){alert('Por favor, introduce un email válido.');return;}
-  if(!consent1){alert('Debes aceptar la política de privacidad para continuar.');return;}
-  if(!consent2){alert('Debes aceptar recibir la newsletter para suscribirte.');return;}
-  var btn=document.querySelector('#nl-form-area .btn-lead');
-  btn.disabled=true;
-  btn.textContent='Enviando…';
-  fetch('https://api.brevo.com/v3/contacts',{
-    method:'POST',
-    headers:{'Content-Type':'application/json','api-key':window.BREVO_API_KEY||''},
-    body:JSON.stringify({email:email,attributes:{FIRSTNAME:name,SMS:phase},updateEnabled:true})
-  }).then(function(r){
-    if(r.ok||r.status===204||r.status===201){
-      document.getElementById('nl-form-area').style.display='none';
-      document.getElementById('nl-success').style.display='block';
-    } else {
-      return r.json().then(function(d){throw new Error(d.message||'Error');});
-    }
-  }).catch(function(){
-    btn.disabled=false;
-    btn.innerHTML='Suscribirme gratis <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
-    alert('Hubo un problema. Inténtalo de nuevo en unos segundos.');
-  });
-}
-</script>
 
 <!-- COOKIE BANNER -->
 <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Aviso de cookies">

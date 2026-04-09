@@ -632,6 +632,43 @@
   </div>
 </section>
 
+<div class="nl-idx-wrap">
+  <div class="nl-idx">
+    <div class="nl-idx-inner">
+      <div class="nl-idx-left">
+        <span class="nl-idx-tag">Newsletter semanal</span>
+        <h2>Cuando baje el Euríbor,<br>sé el primero en saberlo</h2>
+        <ul class="nl-idx-perks">
+          <li>Alertas cuando el Euríbor cambia de tendencia</li>
+          <li>Las hipotecas con mejor TIN/TAE del mes</li>
+          <li>Estrategias para negociar con tu banco</li>
+          <li>Solo lo útil, sin spam</li>
+        </ul>
+        <p class="nl-idx-trust">Sin spam · Baja cuando quieras · Gratis</p>
+      </div>
+      <div class="nl-idx-right">
+        <div id="nl-idx-form">
+          <input type="text" id="nlIdxName" placeholder="Tu nombre" autocomplete="given-name">
+          <input type="email" id="nlIdxEmail" placeholder="tu@email.com" autocomplete="email">
+          <label class="nl-idx-ck">
+            <input type="checkbox" id="nlIdxC1">
+            <span>He leído y acepto la <a href="aviso-legal.html">política de privacidad</a> y el tratamiento de mis datos para gestionar mi suscripción.</span>
+          </label>
+          <label class="nl-idx-ck">
+            <input type="checkbox" id="nlIdxC2">
+            <span>Acepto recibir la newsletter de calculamostuhipoteca.com. Me puedo dar de baja en cualquier momento sin coste.</span>
+          </label>
+          <button class="nl-idx-btn" onclick="nlIdxSubscribe()">Quiero saberlo antes que nadie →</button>
+        </div>
+        <div id="nl-idx-ok" style="display:none;text-align:center;padding:24px 0">
+          <p style="color:#2dd4bf;font-size:16px;font-weight:700;margin-bottom:6px">¡Listo! Ya estás en la lista.</p>
+          <p style="color:rgba(255,255,255,.6);font-size:13px">El próximo martes recibirás tu primera newsletter.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer class="footer">
   <p>© 2026 calculamostuhipoteca.com · Esta herramienta es orientativa y no constituye asesoramiento financiero.</p>
   <p>Consulta con tu entidad bancaria o un asesor hipotecario profesional.</p>
@@ -639,6 +676,7 @@
 </footer>
 
 <script src="script.js"></script>
+<script src="newsletter.js"></script>
 <script src="cookies.js"></script>
 
 <!-- COOKIE BANNER -->
