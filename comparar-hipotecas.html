@@ -465,8 +465,12 @@
           </div>
         </div>
         <label class="consent">
-          <input type="checkbox" id="nlConsent">
-          He leído y acepto la <a href="aviso-legal.html" target="_blank" style="color:var(--teal)">política de privacidad</a>. Entiendo que recibiré comunicaciones de calculamostuhipoteca.com y puedo darme de baja en cualquier momento.
+          <input type="checkbox" id="nlConsent1">
+          He leído y acepto la <a href="aviso-legal.html" target="_blank" style="color:var(--teal)">política de privacidad</a> y el tratamiento de mis datos personales para gestionar mi suscripción.
+        </label>
+        <label class="consent">
+          <input type="checkbox" id="nlConsent2">
+          Acepto recibir la newsletter de calculamostuhipoteca.com con comparativas, alertas del Euríbor y artículos sobre hipotecas. Puedo darme de baja en cualquier momento sin coste.
         </label>
         <button class="btn-lead" type="button" onclick="nlSubscribe()">
           Suscribirme gratis
@@ -540,10 +544,12 @@ function nlSubscribe(){
   var name=document.getElementById('nlName').value.trim();
   var email=document.getElementById('nlEmail').value.trim();
   var phase=document.getElementById('nlPhase').value;
-  var consent=document.getElementById('nlConsent').checked;
+  var consent1=document.getElementById('nlConsent1').checked;
+  var consent2=document.getElementById('nlConsent2').checked;
   if(!name){alert('Por favor, introduce tu nombre.');return;}
   if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){alert('Por favor, introduce un email válido.');return;}
-  if(!consent){alert('Debes aceptar la política de privacidad para continuar.');return;}
+  if(!consent1){alert('Debes aceptar la política de privacidad para continuar.');return;}
+  if(!consent2){alert('Debes aceptar recibir la newsletter para suscribirte.');return;}
   var btn=document.querySelector('#nl-form-area .btn-lead');
   btn.disabled=true;
   btn.textContent='Enviando…';

@@ -101,6 +101,21 @@
   .related-card:hover{border-color:var(--teal)}
   .related-card span{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--ink-muted)}
   .related-card p{font-size:13px;font-weight:600;color:var(--navy);margin:6px 0 0;line-height:1.4}
+  .nl-art{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:32px 36px;margin-top:40px}
+  @media(max-width:560px){.nl-art{padding:22px 18px}}
+  .nl-art h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:18px;color:var(--navy);margin:0 0 6px}
+  .nl-art>p{font-size:14px;color:var(--ink-soft);margin:0 0 18px}
+  .nl-art-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+  @media(max-width:480px){.nl-art-row{grid-template-columns:1fr}}
+  .nl-art-row input{padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;color:var(--ink);background:#fff;width:100%;box-sizing:border-box}
+  .nl-art-row input:focus{outline:none;border-color:var(--teal)}
+  .nl-art-ck{display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--ink-muted);line-height:1.5;margin-bottom:7px;cursor:pointer}
+  .nl-art-ck input{margin-top:2px;flex-shrink:0}
+  .nl-art-ck a{color:var(--teal);text-decoration:none}
+  .nl-art-btn{background:#0D9488;color:#fff;border:none;border-radius:10px;padding:12px 22px;font-size:14px;font-weight:700;cursor:pointer;margin-top:8px}
+  .nl-art-btn:hover{background:#0f766e}
+  .nl-art-btn:disabled{opacity:.6;cursor:not-allowed}
+  .nl-art-ok{display:none;padding:14px 0 0;font-size:14px;font-weight:600;color:var(--teal)}
 </style>
 </head>
 <body>
@@ -309,13 +324,60 @@
     </div>
 
   </div>
+
+  <!-- NEWSLETTER -->
+  <div class="nl-art">
+    <div id="nl-art-form">
+      <h3>¿Te ha sido útil? Recibe más en tu email</h3>
+      <p>Comparativas mensuales, alertas del Euríbor y nuevos artículos. Sin spam, baja cuando quieras.</p>
+      <div class="nl-art-row">
+        <input type="text" id="nlArtName" placeholder="Tu nombre" autocomplete="given-name">
+        <input type="email" id="nlArtEmail" placeholder="tu@email.com" autocomplete="email">
+      </div>
+      <label class="nl-art-ck">
+        <input type="checkbox" id="nlArtC1">
+        <span>He leído y acepto la <a href="aviso-legal.html">política de privacidad</a> y el tratamiento de mis datos para gestionar mi suscripción.</span>
+      </label>
+      <label class="nl-art-ck">
+        <input type="checkbox" id="nlArtC2">
+        <span>Acepto recibir la newsletter de calculamostuhipoteca.com con comparativas, alertas del Euríbor y artículos. Puedo darme de baja en cualquier momento sin coste.</span>
+      </label>
+      <button class="nl-art-btn" onclick="nlArtSubscribe()">Suscribirme gratis</button>
+    </div>
+    <p class="nl-art-ok" id="nl-art-ok">¡Suscripción confirmada! Gracias por unirte.</p>
+  </div>
+
 </div>
 
 <footer class="footer">
   <p>© 2026 calculamostuhipoteca.com · <a href="aviso-legal.html" style="color:var(--ink-muted);text-decoration:underline">Aviso legal y privacidad</a></p>
 </footer>
 
+<script src="brevo-config.js"></script>
 <script src="cookies.js"></script>
+<script>
+function nlArtSubscribe(){
+  var name=document.getElementById('nlArtName').value.trim();
+  var email=document.getElementById('nlArtEmail').value.trim();
+  var c1=document.getElementById('nlArtC1').checked;
+  var c2=document.getElementById('nlArtC2').checked;
+  if(!name){alert('Por favor, introduce tu nombre.');return;}
+  if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){alert('Por favor, introduce un email válido.');return;}
+  if(!c1){alert('Debes aceptar la política de privacidad.');return;}
+  if(!c2){alert('Debes aceptar recibir la newsletter para suscribirte.');return;}
+  var btn=document.querySelector('#nl-art-form .nl-art-btn');
+  btn.disabled=true;btn.textContent='Enviando…';
+  var key=(window.BREVO_API_KEY||'').trim();
+  if(!key){document.getElementById('nl-art-form').style.display='none';document.getElementById('nl-art-ok').style.display='block';return;}
+  fetch('https://api.brevo.com/v3/contacts',{method:'POST',
+    headers:{'Content-Type':'application/json','api-key':key},
+    body:JSON.stringify({email:email,attributes:{FIRSTNAME:name},updateEnabled:true})
+  }).then(function(r){
+    if(r.ok||r.status===201||r.status===204){document.getElementById('nl-art-form').style.display='none';document.getElementById('nl-art-ok').style.display='block';}
+    else return r.json().then(function(d){throw new Error(d.message);});
+  }).catch(function(){btn.disabled=false;btn.textContent='Suscribirme gratis';alert('Hubo un problema. Inténtalo de nuevo.');});
+}
+</script>
 
 <!-- COOKIE BANNER -->
 <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Aviso de cookies">
