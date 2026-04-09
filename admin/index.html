@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin | calculamostuhipoteca.com</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#F0F4F8;color:#1a2332;min-height:100vh}
+
+/* LOGIN */
+#login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0B1F3A}
+.login-card{background:#fff;border-radius:16px;padding:44px 40px;width:100%;max-width:380px;box-shadow:0 24px 64px rgba(0,0,0,.35)}
+.login-logo{display:flex;align-items:center;gap:10px;margin-bottom:28px}
+.login-logo span{font-size:14px;font-weight:700;color:#0B1F3A}
+.login-card h1{font-size:22px;font-weight:800;color:#0B1F3A;margin-bottom:6px}
+.login-card p{font-size:13px;color:#7a8aa0;margin-bottom:28px}
+.login-card label{display:block;font-size:12px;font-weight:600;color:#4a5568;margin-bottom:6px;letter-spacing:.02em}
+.login-card input{display:block;width:100%;padding:12px 14px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;font-family:inherit;color:#1a2332;outline:none;transition:border-color .2s}
+.login-card input:focus{border-color:#0D9488;background:#f0fdf9}
+.login-btn{margin-top:16px;width:100%;padding:13px;background:#0D9488;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s;letter-spacing:.01em}
+.login-btn:hover{background:#0f766e}
+.login-error{margin-top:12px;font-size:13px;color:#e53e3e;text-align:center;display:none;padding:10px;background:#fff5f5;border-radius:8px}
+
+/* APP */
+#app{display:none;min-height:100vh}
+.app-layout{display:flex;min-height:100vh}
+
+/* SIDEBAR */
+.sidebar{width:220px;background:#0B1F3A;display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto}
+.sidebar-brand{padding:22px 20px 18px;border-bottom:1px solid rgba(255,255,255,.08)}
+.sidebar-brand .brand-label{font-size:10px;font-weight:700;color:rgba(255,255,255,.35);letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px}
+.sidebar-brand .brand-site{font-size:13px;font-weight:600;color:#fff}
+.sidebar-nav{padding:12px 10px;flex:1}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;font-size:13px;font-weight:500;color:rgba(255,255,255,.55);text-decoration:none;cursor:pointer;transition:all .18s;margin-bottom:2px;border:none;background:none;width:100%;text-align:left;font-family:inherit}
+.nav-item:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav-item.active{color:#fff;background:rgba(13,148,136,.25);font-weight:600}
+.nav-item svg{opacity:.6;flex-shrink:0;transition:opacity .18s}
+.nav-item.active svg,.nav-item:hover svg{opacity:1}
+.nav-section{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.25);padding:14px 12px 6px;margin-top:4px}
+.sidebar-footer{padding:14px 20px;border-top:1px solid rgba(255,255,255,.08)}
+.sidebar-footer button{font-size:12px;color:rgba(255,255,255,.35);background:none;border:none;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px;padding:0;transition:color .18s}
+.sidebar-footer button:hover{color:rgba(255,255,255,.7)}
+
+/* MAIN */
+.main-area{flex:1;overflow-y:auto;background:#F0F4F8}
+.topbar{background:#fff;border-bottom:1px solid #e8edf3;padding:0 28px;height:54px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10;box-shadow:0 1px 0 #e8edf3}
+.topbar h2{font-size:15px;font-weight:700;color:#0B1F3A}
+.topbar-right{display:flex;align-items:center;gap:10px;font-size:12px;color:#a0aec0}
+.topbar-live{display:inline-flex;align-items:center;gap:5px;background:#f0fdf9;color:#0D9488;border:1px solid #99f6e4;border-radius:99px;padding:3px 10px;font-size:11px;font-weight:700}
+.topbar-live::before{content:'';width:6px;height:6px;background:#10b981;border-radius:50%;display:inline-block}
+.page-content{padding:24px 28px}
+
+/* STAT CARDS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+@media(max-width:960px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.stats-grid{grid-template-columns:1fr}}
+.stat-card{background:#fff;border-radius:12px;padding:18px 20px;border:1px solid #e8edf3;position:relative;overflow:hidden}
+.stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.stat-card.c-teal::after{background:#0D9488}
+.stat-card.c-navy::after{background:#3B5BDB}
+.stat-card.c-gold::after{background:#B45309}
+.stat-card.c-green::after{background:#10b981}
+.stat-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;float:right;margin-top:-2px}
+.stat-icon.teal{background:#f0fdf9}
+.stat-icon.navy{background:#f0f4ff}
+.stat-icon.gold{background:#fffbeb}
+.stat-icon.green{background:#f0fdf4}
+.stat-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#a0aec0;margin-bottom:8px}
+.stat-value{font-size:26px;font-weight:800;color:#0B1F3A;line-height:1;margin-bottom:3px}
+.stat-sub{font-size:11px;color:#a0aec0}
+
+/* SECTION CARDS */
+.section-card{background:#fff;border-radius:12px;border:1px solid #e8edf3;margin-bottom:20px;overflow:hidden}
+.section-header{padding:16px 20px;border-bottom:1px solid #f5f7fa;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.section-header h3{font-size:13px;font-weight:700;color:#0B1F3A}
+.section-badge{background:#f0f4f8;color:#7a8aa0;border-radius:99px;padding:2px 9px;font-size:11px;font-weight:600}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse}
+.data-table th{padding:10px 16px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#a0aec0;background:#f9fafb;border-bottom:1px solid #f0f4f8}
+.data-table td{padding:13px 16px;font-size:13px;color:#4a5568;border-bottom:1px solid #f9fafb;vertical-align:middle}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:hover td{background:#fafbfd}
+.article-title{font-weight:600;color:#0B1F3A;max-width:340px;line-height:1.35}
+
+/* TAGS */
+.tag{display:inline-block;font-size:11px;font-weight:600;border-radius:99px;padding:2px 9px;white-space:nowrap}
+.tag.concept{background:#EFF6FF;color:#1D4ED8}
+.tag.decision{background:#F0FDFA;color:#0D9488}
+.tag.costs{background:#FFFBEB;color:#B45309}
+.tag.tactic{background:#F5F3FF;color:#6D28D9}
+.tag.prep{background:#F0FDF4;color:#15803D}
+.tag.help{background:#FFF7ED;color:#C2410C}
+
+/* STATUS */
+.status-ok{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:#10b981}
+.status-ok::before{content:'';width:6px;height:6px;border-radius:50%;background:#10b981;display:inline-block}
+
+/* ACTION BTN */
+.btn-action{color:#0D9488;text-decoration:none;font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;background:#f0fdf9;border:1px solid #a7f3d0;white-space:nowrap;display:inline-block;transition:background .15s}
+.btn-action:hover{background:#ccfbf1}
+
+/* NEWSLETTER SECTION */
+.nl-center{text-align:center;padding:40px 24px 32px}
+.nl-num{font-size:72px;font-weight:900;color:#0B1F3A;line-height:1;letter-spacing:-2px}
+.nl-num-label{font-size:15px;color:#7a8aa0;margin-top:6px}
+.nl-loading-msg{font-size:12px;color:#a0aec0;margin-top:6px}
+.nl-action-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+.btn-primary{background:#0D9488;color:#fff;border:none;border-radius:10px;padding:10px 20px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;font-family:inherit;display:inline-block;transition:background .15s}
+.btn-primary:hover{background:#0f766e}
+.btn-outline{background:#fff;color:#0B1F3A;border:1.5px solid #e2e8f0;border-radius:10px;padding:10px 20px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;font-family:inherit;display:inline-block;transition:background .15s}
+.btn-outline:hover{background:#f7f9fc}
+
+/* INFO BOX */
+.info-box{background:#f7f9fc;border-radius:10px;padding:16px 20px;margin:0 20px 20px;font-size:13px;color:#4a5568;line-height:1.8;border:1px solid #e8edf3}
+.info-box strong{color:#0B1F3A}
+.info-box a{color:#0D9488;text-decoration:none}
+.info-box a:hover{text-decoration:underline}
+
+/* PAGES */
+.pages-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:16px 20px}
+@media(max-width:680px){.pages-grid{grid-template-columns:1fr}}
+.page-card{border:1.5px solid #e8edf3;border-radius:10px;padding:16px 18px;display:flex;gap:12px;align-items:flex-start;transition:border-color .15s}
+.page-card:hover{border-color:#0D9488}
+.page-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.page-icon.blue{background:#f0f4ff}
+.page-icon.teal{background:#f0fdf9}
+.page-body .ptitle{font-size:13px;font-weight:700;color:#0B1F3A;margin-bottom:2px}
+.page-body .purl{font-size:11px;color:#a0aec0;font-family:monospace;margin-bottom:8px}
+.page-body .pdesc{font-size:12px;color:#7a8aa0;margin-bottom:8px;line-height:1.5}
+.page-actions{display:flex;gap:6px;flex-wrap:wrap}
+
+/* QUICK LINKS */
+.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:16px 20px}
+@media(max-width:700px){.quick-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:420px){.quick-grid{grid-template-columns:1fr}}
+.quick-link{border:1.5px solid #e8edf3;border-radius:10px;padding:14px 16px;text-decoration:none;display:block;transition:all .15s}
+.quick-link:hover{border-color:#0D9488;background:#f0fdf9}
+.quick-link .ql-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#a0aec0;margin-bottom:3px}
+.quick-link .ql-title{font-size:13px;font-weight:600;color:#0B1F3A;line-height:1.35}
+
+/* TABS */
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* RESPONSIVE */
+@media(max-width:680px){
+  .sidebar{width:200px}
+  .page-content{padding:16px}
+  .topbar{padding:0 16px}
+  .stats-grid{gap:10px}
+}
+@media(max-width:560px){
+  .app-layout{flex-direction:column}
+  .sidebar{width:100%;height:auto;position:relative;flex-direction:row;flex-wrap:wrap}
+  .sidebar-brand{padding:12px 16px}
+  .sidebar-nav{display:flex;flex-direction:row;flex-wrap:wrap;gap:4px;padding:8px}
+  .nav-section{display:none}
+  .sidebar-footer{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== LOGIN ===== -->
+<div id="login-wrap">
+  <div class="login-card">
+    <div class="login-logo">
+      <svg width="30" height="30" viewBox="0 0 36 36" fill="none">
+        <path d="M6 18L18 7L30 18V31H6V18Z" stroke="#0B1F3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M14 31V22H22V31" stroke="#0D9488" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>calculamostuhipoteca.com</span>
+    </div>
+    <h1>Panel de administración</h1>
+    <p>Acceso restringido. Introduce la contraseña para continuar.</p>
+    <label for="pwd">Contraseña de acceso</label>
+    <input type="password" id="pwd" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="login-btn" onclick="doLogin()">Entrar al panel</button>
+    <p class="login-error" id="login-err">Contraseña incorrecta. Inténtalo de nuevo.</p>
+  </div>
+</div>
+
+<!-- ===== APP ===== -->
+<div id="app">
+  <div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-label">Panel admin</div>
+        <div class="brand-site">calculamostuhipoteca.com</div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">General</div>
+        <button class="nav-item active" id="nav-resumen" onclick="showTab('resumen')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Resumen
+        </button>
+        <button class="nav-item" id="nav-articulos" onclick="showTab('articulos')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+          Artículos
+        </button>
+        <button class="nav-item" id="nav-newsletter" onclick="showTab('newsletter')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Newsletter
+        </button>
+        <button class="nav-item" id="nav-paginas" onclick="showTab('paginas')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Páginas web
+        </button>
+        <div class="nav-section">Accesos</div>
+        <a class="nav-item" href="../index.html" target="_blank">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Ver la web
+        </a>
+        <a class="nav-item" href="https://app.brevo.com" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Brevo (email)
+        </a>
+        <a class="nav-item" href="https://vercel.com/dashboard" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="12 2 2 7 12 22 22 7 12 2"/></svg>
+          Vercel
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <button onclick="doLogout()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16,17 21,12 16,7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Cerrar sesión
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN AREA -->
+    <div class="main-area">
+      <div class="topbar">
+        <h2 id="topbar-title">Resumen</h2>
+        <div class="topbar-right">
+          <span class="topbar-live">En línea</span>
+          <span>calculamostuhipoteca.com</span>
+        </div>
+      </div>
+
+      <div class="page-content">
+
+        <!-- ===== TAB RESUMEN ===== -->
+        <div class="tab-content active" id="tab-resumen">
+
+          <div class="stats-grid">
+            <div class="stat-card c-teal">
+              <div class="stat-icon teal">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div class="stat-label">Suscriptores</div>
+              <div class="stat-value" id="stat-subs">...</div>
+              <div class="stat-sub">newsletter activos</div>
+            </div>
+            <div class="stat-card c-navy">
+              <div class="stat-icon navy">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#3B5BDB" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+              </div>
+              <div class="stat-label">Artículos</div>
+              <div class="stat-value">7</div>
+              <div class="stat-sub">publicados en la guía</div>
+            </div>
+            <div class="stat-card c-gold">
+              <div class="stat-icon gold">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </div>
+              <div class="stat-label">Páginas</div>
+              <div class="stat-value">4</div>
+              <div class="stat-sub">páginas principales</div>
+            </div>
+            <div class="stat-card c-green">
+              <div class="stat-icon green">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <div class="stat-label">Actualizado</div>
+              <div class="stat-value" style="font-size:18px;padding-top:4px" id="stat-date">abr 2026</div>
+              <div class="stat-sub">última revisión</div>
+            </div>
+          </div>
+
+          <div class="section-card">
+            <div class="section-header"><h3>Accesos directos</h3></div>
+            <div class="quick-grid">
+              <a href="../index.html" target="_blank" class="quick-link">
+                <div class="ql-tag">Herramienta</div>
+                <div class="ql-title">Calculadora hipotecaria</div>
+              </a>
+              <a href="../comparar-hipotecas.html" target="_blank" class="quick-link">
+                <div class="ql-tag">Herramienta</div>
+                <div class="ql-title">Comparar hipotecas</div>
+              </a>
+              <a href="../guia-hipotecaria.html" target="_blank" class="quick-link">
+                <div class="ql-tag">Contenido</div>
+                <div class="ql-title">Guía hipotecaria</div>
+              </a>
+              <a href="https://app.brevo.com/contact/list" target="_blank" rel="noopener" class="quick-link">
+                <div class="ql-tag">Newsletter</div>
+                <div class="ql-title">Suscriptores en Brevo</div>
+              </a>
+              <a href="https://vercel.com/dashboard" target="_blank" rel="noopener" class="quick-link">
+                <div class="ql-tag">Servidor</div>
+                <div class="ql-title">Panel Vercel</div>
+              </a>
+              <a href="https://search.google.com/search-console" target="_blank" rel="noopener" class="quick-link">
+                <div class="ql-tag">SEO</div>
+                <div class="ql-title">Google Search Console</div>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ===== TAB ARTÍCULOS ===== -->
+        <div class="tab-content" id="tab-articulos">
+          <div class="section-card">
+            <div class="section-header">
+              <h3>Artículos publicados</h3>
+              <span class="section-badge">7 artículos</span>
+            </div>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Título</th>
+                  <th>Categoría</th>
+                  <th>Lectura</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="articles-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ===== TAB NEWSLETTER ===== -->
+        <div class="tab-content" id="tab-newsletter">
+          <div class="section-card" style="margin-bottom:16px">
+            <div class="nl-center">
+              <div class="nl-num" id="nl-count">...</div>
+              <div class="nl-num-label">suscriptores activos en la newsletter</div>
+              <div class="nl-loading-msg" id="nl-loading">Cargando datos desde Brevo...</div>
+              <div class="nl-action-row">
+                <a href="https://app.brevo.com/contact/list" target="_blank" rel="noopener" class="btn-primary">Ver todos los suscriptores</a>
+                <a href="https://app.brevo.com/campaigns/new" target="_blank" rel="noopener" class="btn-outline">Crear campaña</a>
+              </div>
+            </div>
+          </div>
+          <div class="section-card">
+            <div class="section-header"><h3>Gestión de la newsletter</h3></div>
+            <div class="info-box">
+              <strong>Ver suscriptores:</strong> Entra en <a href="https://app.brevo.com/contact/list" target="_blank">app.brevo.com</a> → Contacts → Lists. Verás todos los emails y nombres con su fecha de alta.<br><br>
+              <strong>Enviar una campaña:</strong> Campaigns → Create a campaign → Email. Diseña el email, selecciona tu lista de contactos y envía. Brevo tiene editor visual sin conocimientos técnicos.<br><br>
+              <strong>Cómo llegan los suscriptores:</strong> cada vez que alguien rellena el formulario en cualquier página de la web, los datos se guardan en Brevo automáticamente a través del servidor.<br><br>
+              <strong>Exportar la lista:</strong> Contacts → Export → CSV. Descarga todos tus suscriptores cuando quieras. Nadie puede quitarte esos datos.
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== TAB PÁGINAS ===== -->
+        <div class="tab-content" id="tab-paginas">
+          <div class="section-card" style="margin-bottom:16px">
+            <div class="section-header">
+              <h3>Páginas principales</h3>
+              <span class="section-badge">4 páginas</span>
+            </div>
+            <div class="pages-grid" id="main-pages-grid"></div>
+          </div>
+          <div class="section-card">
+            <div class="section-header">
+              <h3>Artículos de la guía</h3>
+              <span class="section-badge">7 artículos</span>
+            </div>
+            <div class="pages-grid" id="articles-pages-grid"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+var token = '';
+
+var ARTICLES = [
+  { n:1, slug:'tin-vs-tae', title:'TIN vs TAE: qué son y cuál importa más en tu hipoteca', tag:'Conceptos clave', tc:'concept', mins:5, file:'tin-vs-tae.html', desc:'Diferencia entre TIN y TAE con ejemplos reales.' },
+  { n:2, slug:'hipoteca-fija-variable-mixta', title:'Hipoteca fija, variable o mixta: cuál elegir en 2026', tag:'Decisión', tc:'decision', mins:7, file:'hipoteca-fija-variable-mixta.html', desc:'Análisis de los tres tipos con datos reales.' },
+  { n:3, slug:'gastos-compra-hipoteca', title:'Gastos de compra de vivienda: cuánto necesitas ahorrar', tag:'Gastos', tc:'costs', mins:6, file:'gastos-compra-hipoteca.html', desc:'Impuestos, notaría, registro y gestoría explicados.' },
+  { n:4, slug:'como-negociar-hipoteca', title:'Cómo negociar una hipoteca con tu banco en 2026', tag:'Estrategia', tc:'tactic', mins:8, file:'como-negociar-hipoteca.html', desc:'Palancas concretas para conseguir mejores condiciones.' },
+  { n:5, slug:'documentos-hipoteca', title:'Qué documentos necesitas para pedir una hipoteca en 2026', tag:'Preparación', tc:'prep', mins:6, file:'documentos-hipoteca.html', desc:'Lista completa por tipo de trabajador.' },
+  { n:6, slug:'subrogacion-hipoteca', title:'Subrogación de hipoteca: cambiar de banco y pagar menos', tag:'Estrategia', tc:'tactic', mins:7, file:'subrogacion-hipoteca.html', desc:'Cuándo vale la pena y cómo hacerlo.' },
+  { n:7, slug:'hipoteca-jovenes', title:'Hipoteca para jóvenes en 2026: aval ICO y condiciones especiales', tag:'Ayudas', tc:'help', mins:8, file:'hipoteca-jovenes.html', desc:'Cómo funciona el aval ICO y otras ayudas.' }
+];
+
+var MAIN_PAGES = [
+  { title:'Calculadora de hipotecas', desc:'Herramienta principal: cuota, TAE, gastos.', file:'index.html', url:'/' },
+  { title:'Comparar hipotecas', desc:'Comparativa de las mejores hipotecas del mercado.', file:'comparar-hipotecas.html', url:'/comparar-hipotecas' },
+  { title:'Guía hipotecaria', desc:'Centro de artículos y recursos.', file:'guia-hipotecaria.html', url:'/guia-hipotecaria' },
+  { title:'Aviso legal', desc:'Política de privacidad y términos legales.', file:'aviso-legal.html', url:'/aviso-legal' }
+];
+
+function doLogin() {
+  var pwd = document.getElementById('pwd').value.trim();
+  var errEl = document.getElementById('login-err');
+  errEl.style.display = 'none';
+  if (!pwd) return;
+  fetch('/api/admin-auth', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({password: pwd})
+  }).then(function(r) {
+    return r.json().then(function(d) {
+      if (r.ok && d.token) {
+        token = d.token;
+        sessionStorage.setItem('admin_token', token);
+        showApp();
+      } else {
+        errEl.textContent = d.error || 'Contraseña incorrecta.';
+        errEl.style.display = 'block';
+      }
+    });
+  }).catch(function() {
+    errEl.textContent = 'Error de conexión con el servidor.';
+    errEl.style.display = 'block';
+  });
+}
+
+function doLogout() {
+  sessionStorage.removeItem('admin_token');
+  token = '';
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('login-wrap').style.display = 'flex';
+  document.getElementById('pwd').value = '';
+}
+
+function showApp() {
+  document.getElementById('login-wrap').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  renderArticlesTable();
+  renderPages();
+  loadStats();
+  setDate();
+}
+
+function showTab(tab) {
+  document.querySelectorAll('.tab-content').forEach(function(el){el.classList.remove('active')});
+  document.querySelectorAll('.nav-item').forEach(function(el){el.classList.remove('active')});
+  document.getElementById('tab-' + tab).classList.add('active');
+  var navEl = document.getElementById('nav-' + tab);
+  if (navEl) navEl.classList.add('active');
+  var titles = {resumen:'Resumen', articulos:'Artículos', newsletter:'Newsletter', paginas:'Páginas web'};
+  document.getElementById('topbar-title').textContent = titles[tab] || tab;
+}
+
+function setDate() {
+  var months = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  var now = new Date();
+  document.getElementById('stat-date').textContent = months[now.getMonth()] + ' ' + now.getFullYear();
+}
+
+function loadStats() {
+  fetch('/api/admin-stats', {
+    headers: {'Authorization': 'Bearer ' + token}
+  }).then(function(r) {
+    return r.json().then(function(d) {
+      var subsEl = document.getElementById('stat-subs');
+      var nlEl = document.getElementById('nl-count');
+      var nlLoad = document.getElementById('nl-loading');
+      if (r.ok && d.subscribers !== null && d.subscribers !== undefined) {
+        subsEl.textContent = d.subscribers;
+        nlEl.textContent = d.subscribers;
+        nlLoad.style.display = 'none';
+      } else {
+        subsEl.textContent = 'N/A';
+        nlEl.textContent = '?';
+        nlLoad.textContent = 'No se pudo obtener el dato. Comprueba la BREVO_API_KEY en Vercel.';
+      }
+    });
+  }).catch(function() {
+    document.getElementById('stat-subs').textContent = 'N/A';
+    document.getElementById('nl-count').textContent = '?';
+    document.getElementById('nl-loading').textContent = 'Error al conectar. Intenta recargar.';
+  });
+}
+
+function renderArticlesTable() {
+  document.getElementById('articles-tbody').innerHTML = ARTICLES.map(function(a) {
+    return '<tr>' +
+      '<td style="color:#a0aec0;font-weight:700;font-size:12px">' + a.n + '</td>' +
+      '<td><div class="article-title">' + a.title + '</div></td>' +
+      '<td><span class="tag ' + a.tc + '">' + a.tag + '</span></td>' +
+      '<td style="color:#a0aec0;font-size:12px">' + a.mins + ' min</td>' +
+      '<td><span class="status-ok">Publicado</span></td>' +
+      '<td><a href="../' + a.file + '" target="_blank" class="btn-action">Ver artículo</a></td>' +
+      '</tr>';
+  }).join('');
+}
+
+function renderPages() {
+  document.getElementById('main-pages-grid').innerHTML = MAIN_PAGES.map(function(p) {
+    return '<div class="page-card">' +
+      '<div class="page-icon blue"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B5BDB" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>' +
+      '<div class="page-body"><div class="ptitle">' + p.title + '</div><div class="purl">' + p.url + '</div><div class="pdesc">' + p.desc + '</div>' +
+      '<div class="page-actions"><a href="../' + p.file + '" target="_blank" class="btn-action">Ver página</a></div></div></div>';
+  }).join('');
+
+  document.getElementById('articles-pages-grid').innerHTML = ARTICLES.map(function(a) {
+    return '<div class="page-card">' +
+      '<div class="page-icon teal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/></svg></div>' +
+      '<div class="page-body"><div class="ptitle">' + a.title + '</div><div class="purl">/' + a.slug + '</div><div class="pdesc">' + a.desc + '</div>' +
+      '<div class="page-actions"><a href="../' + a.file + '" target="_blank" class="btn-action">Ver artículo</a></div></div></div>';
+  }).join('');
+}
+
+// Auto-login si hay sesión guardada
+window.addEventListener('DOMContentLoaded', function() {
+  var saved = sessionStorage.getItem('admin_token');
+  if (saved) { token = saved; showApp(); }
+});
+</script>
+</body>
+</html>

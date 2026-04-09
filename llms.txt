@@ -1,0 +1,29 @@
+# calculamostuhipoteca.com
+
+> Calculadora de hipotecas gratuita y guía hipotecaria completa en español. Herramientas y artículos para entender, calcular y comparar hipotecas en España sin letra pequeña.
+
+Sitio web orientado a personas que están buscando o ya tienen una hipoteca en España. Contiene una calculadora interactiva, una comparativa de hipotecas actualizada y artículos educativos sobre el mercado hipotecario español.
+
+## Herramientas principales
+
+- [Calculadora de hipotecas](https://calculamostuhipoteca.com/): Calcula cuota mensual, TAE real, total de intereses y gastos de compra (ITP/IVA, notaría, registro, gestoría, tasación). Incluye seguros y comisiones.
+- [Comparar hipotecas](https://calculamostuhipoteca.com/comparar-hipotecas): Comparativa actualizada de las mejores hipotecas fijas, variables y mixtas del mercado español en 2026. Incluye Unicaja, CaixaBank, BBVA, Santander, Kutxabank, Ibercaja, Openbank, Pibank y más.
+
+## Guía hipotecaria
+
+- [Guía hipotecaria](https://calculamostuhipoteca.com/guia-hipotecaria): Índice de todos los artículos.
+- [TIN vs TAE en hipotecas](https://calculamostuhipoteca.com/tin-vs-tae): Diferencia entre TIN y TAE, qué incluye cada uno y ejemplos reales de por qué la TAE es el dato clave para comparar hipotecas.
+- [Hipoteca fija, variable o mixta](https://calculamostuhipoteca.com/hipoteca-fija-variable-mixta): Análisis comparativo de los tres tipos de hipoteca con datos reales para 2026 y criterios para elegir según el perfil.
+- [Gastos de compra de vivienda](https://calculamostuhipoteca.com/gastos-compra-hipoteca): Desglose completo de impuestos (ITP, IVA, IAJD), notaría, registro, gestoría y tasación. ITP por comunidad autónoma.
+- [Cómo negociar una hipoteca](https://calculamostuhipoteca.com/como-negociar-hipoteca): Estrategias concretas para negociar tipo de interés, comisiones y vinculaciones con el banco.
+- [Documentos para pedir una hipoteca](https://calculamostuhipoteca.com/documentos-hipoteca): Lista completa de documentación necesaria para asalariados, autónomos y pensionistas. Dónde obtener cada documento.
+- [Subrogación de hipoteca](https://calculamostuhipoteca.com/subrogacion-hipoteca): Qué es subrogar, cuándo vale la pena, costes reales y proceso paso a paso para cambiar de banco en España.
+- [Hipoteca para jóvenes y aval ICO](https://calculamostuhipoteca.com/hipoteca-jovenes): Cómo funciona el aval ICO del Estado, requisitos, bancos adheridos y otras ayudas para comprar la primera vivienda en 2026.
+
+## Información del sitio
+
+- Autora: Raquel Ayllón García
+- Idioma: Español (España)
+- Mercado: España
+- Actualización: Abril 2026
+- Aviso legal: https://calculamostuhipoteca.com/aviso-legal
