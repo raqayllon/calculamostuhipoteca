@@ -101,7 +101,7 @@ function calculate() {
   const lIns    = R('lifeIns').checked ? parse(R('lifeInsCost').value) : 0;
 
   const loan = price - down;
-  if (loan <= 0) { alert('La entrada no puede ser mayor o igual al precio de compra.'); return; }
+  if (loan <= 0) return; /* silently skip invalid intermediate state while typing */
 
   const n   = years * 12;
   const r   = tin / 12;
