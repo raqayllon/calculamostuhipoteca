@@ -58,13 +58,23 @@ window.toggleC = toggleC;
 
 /* ── ITP / IGIC table ───────────────────────────────── */
 const ITP = {
-  general:    { r: .10, l: 'ITP (10%)' },
-  cataluna:   { r: .10, l: 'ITP (10%)' },
-  madrid:     { r: .06, l: 'ITP (6%)' },
-  andalucia:  { r: .07, l: 'ITP (7%)' },
-  valencia:   { r: .10, l: 'ITP (10%)' },
-  pais_vasco: { r: .04, l: 'ITP (4%)' },
-  canarias:   { r: .065,l: 'IGIC (6,5%)' },
+  andalucia:        { r: .07,  l: 'ITP (7%)' },
+  aragon:           { r: .08,  l: 'ITP (8%)' },
+  asturias:         { r: .08,  l: 'ITP (8%)' },
+  baleares:         { r: .08,  l: 'ITP (8%)' },
+  canarias:         { r: .065, l: 'IGIC (6,5%)' },
+  cantabria:        { r: .10,  l: 'ITP (10%)' },
+  castilla_la_mancha: { r: .09, l: 'ITP (9%)' },
+  castilla_leon:    { r: .08,  l: 'ITP (8%)' },
+  cataluna:         { r: .10,  l: 'ITP (10%)' },
+  extremadura:      { r: .08,  l: 'ITP (8%)' },
+  galicia:          { r: .10,  l: 'ITP (10%)' },
+  la_rioja:         { r: .07,  l: 'ITP (7%)' },
+  madrid:           { r: .06,  l: 'ITP (6%)' },
+  murcia:           { r: .08,  l: 'ITP (8%)' },
+  navarra:          { r: .06,  l: 'ITP (6%)' },
+  pais_vasco:       { r: .04,  l: 'ITP (4%)' },
+  valencia:         { r: .10,  l: 'ITP (10%)' },
 };
 
 /* ── Core calculation ───────────────────────────────── */
