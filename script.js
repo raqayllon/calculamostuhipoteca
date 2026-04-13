@@ -30,10 +30,17 @@ updateRange('openFee',  'openFeeVal', 1, ' %');
 updateRange('discount', 'discountVal',2, ' %');
 
 /* ── Auto-format money inputs ───────────────────────── */
+let _liveT;
 ['price', 'down', 'homeInsCost', 'lifeInsCost'].forEach(id => {
   R(id).addEventListener('blur', function () { fmtInput(this); });
   R(id).addEventListener('keydown', function (e) {
     if (e.key === 'Enter') { fmtInput(this); calculate(); }
+  });
+  R(id).addEventListener('input', function () {
+    clearTimeout(_liveT);
+    _liveT = setTimeout(() => {
+      if (R('results').classList.contains('visible')) calculate();
+    }, 350);
   });
 });
 
@@ -150,19 +157,34 @@ function calculate() {
   R('rInterest').textContent= fmt(Math.round(totalInt)) + ' €';
   R('rTotal').textContent   = fmt(Math.round(totalPaid)) + ' €';
 
-  /* Bars */
-  const mx = Math.max(loan, totalInt, totIns || 1);
-  R('barCap').style.width  = (loan / mx * 100) + '%';
-  R('barCapA').textContent  = fmt(loan) + ' €';
-  R('barInt').style.width  = (totalInt / mx * 100) + '%';
-  R('barIntA').textContent  = fmt(Math.round(totalInt)) + ' €';
+  /* Donut chart */
+  const C = 314.159;
+  const donutTot = loan + totalInt + (totIns || 0);
+  const capArc = loan / donutTot * C;
+  const intArc = totalInt / donutTot * C;
+  R('donutCap').setAttribute('stroke-dasharray', capArc + ' ' + C);
+  R('donutCap').setAttribute('stroke-dashoffset', 0);
+  R('donutInt').setAttribute('stroke-dasharray', intArc + ' ' + C);
+  R('donutInt').setAttribute('stroke-dashoffset', -capArc);
+  R('barCapA').textContent = fmt(loan) + ' €';
+  R('barIntA').textContent = fmt(Math.round(totalInt)) + ' €';
   if (totIns > 0) {
+    const insArc = totIns / donutTot * C;
     R('barInsR').style.display = 'flex';
-    R('barIns').style.width    = (totIns / mx * 100) + '%';
-    R('barInsA').textContent   = fmt(Math.round(totIns)) + ' €';
+    R('donutIns').setAttribute('stroke-dasharray', insArc + ' ' + C);
+    R('donutIns').setAttribute('stroke-dashoffset', -(capArc + intArc));
+    R('barInsA').textContent = fmt(Math.round(totIns)) + ' €';
   } else {
     R('barInsR').style.display = 'none';
+    R('donutIns').setAttribute('stroke-dasharray', '0 314');
   }
+  R('donutCenter').textContent = fmt(Math.round(donutTot)) + ' €';
+
+  /* LTV + mortgage type badges */
+  const ltv = Math.round(loan / price * 100);
+  R('ltvBadge').textContent = 'LTV ' + ltv + '%';
+  const mType = R('mortgageType');
+  R('mortTypeBadge').textContent = mType.options[mType.selectedIndex].text;
 
   /* Costs */
   R('taxLabel').textContent = taxL;

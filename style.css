@@ -153,13 +153,21 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 .mrow-val.teal{color:var(--teal)}
 .mrow-val.coral{color:var(--coral)}
 
-/* Bars */
-.bar-chart{margin:18px 0 8px}
-.brow{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.brow-label{width:68px;font-size:11px;font-weight:600;color:var(--ink-muted);text-align:right;flex-shrink:0}
-.brow-track{flex:1;height:24px;background:var(--surface-alt);border-radius:6px;overflow:hidden}
-.brow-fill{height:100%;border-radius:6px;transition:width .7s cubic-bezier(.4,0,.2,1)}
-.brow-amt{font-size:11px;font-weight:700;color:var(--ink-soft);min-width:72px;flex-shrink:0}
+/* Donut chart */
+.donut-wrap{display:flex;align-items:center;gap:20px;margin:20px 0 8px;padding:16px 18px;background:var(--surface-alt);border-radius:var(--radius-sm)}
+.donut-svg{width:100px;height:100px;flex-shrink:0}
+.donut-seg{transition:stroke-dasharray .7s cubic-bezier(.4,0,.2,1),stroke-dashoffset .7s cubic-bezier(.4,0,.2,1)}
+.donut-c1{font-size:8px;fill:var(--ink-muted);font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.8px}
+.donut-c2{font-size:11px;fill:var(--ink);font-family:'Outfit',sans-serif;font-weight:800}
+.donut-legend{flex:1;display:flex;flex-direction:column;gap:9px}
+.dleg{display:flex;align-items:center;gap:8px;font-size:12px}
+.dleg-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.dleg-name{flex:1;color:var(--ink-soft)}
+.dleg-amt{color:var(--ink);font-weight:700;font-size:12px}
+/* Result hero badges */
+.result-hero-badges{display:flex;justify-content:center;gap:8px;margin-top:12px;flex-wrap:wrap}
+.rhbadge{background:rgba(255,255,255,.08);color:rgba(255,255,255,.65);font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;border:1px solid rgba(255,255,255,.12)}
+.rhbadge.gold{background:rgba(184,134,11,.15);color:#F4CB2E;border-color:rgba(184,134,11,.3)}
 
 /* Tip box */
 .tip-box{background:var(--teal-light);border:1px solid rgba(13,148,136,.12);border-radius:var(--radius-sm);padding:16px 18px;margin-top:18px}

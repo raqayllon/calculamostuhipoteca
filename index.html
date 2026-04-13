@@ -362,6 +362,10 @@
       <div class="rlabel">Tu cuota mensual</div>
       <div class="ramount" id="monthly">—</div>
       <div class="rsub" id="termSub">durante 25 años · TIN 3,20%</div>
+      <div class="result-hero-badges">
+        <span class="rhbadge" id="ltvBadge">LTV 80%</span>
+        <span class="rhbadge gold" id="mortTypeBadge">Tipo fijo</span>
+      </div>
     </div>
     <div class="result-body">
       <div class="divider">Resumen del préstamo</div>
@@ -392,22 +396,26 @@
         <span class="mrow-val" id="rTotal">—</span>
       </div>
 
-      <!-- Bar chart -->
-      <div class="bar-chart" aria-label="Distribución de pagos">
-        <div class="brow">
-          <span class="brow-label">Capital</span>
-          <div class="brow-track"><div class="brow-fill" id="barCap" style="width:0;background:var(--navy)"></div></div>
-          <span class="brow-amt" id="barCapA">—</span>
-        </div>
-        <div class="brow">
-          <span class="brow-label">Intereses</span>
-          <div class="brow-track"><div class="brow-fill" id="barInt" style="width:0;background:var(--gold)"></div></div>
-          <span class="brow-amt" id="barIntA">—</span>
-        </div>
-        <div class="brow" id="barInsR" style="display:none">
-          <span class="brow-label">Seguros</span>
-          <div class="brow-track"><div class="brow-fill" id="barIns" style="width:0;background:var(--teal)"></div></div>
-          <span class="brow-amt" id="barInsA">—</span>
+      <!-- Donut chart -->
+      <div class="donut-wrap" aria-label="Distribución total del préstamo">
+        <svg class="donut-svg" viewBox="0 0 120 120" aria-hidden="true">
+          <circle cx="60" cy="60" r="50" fill="none" stroke="#EDEEF2" stroke-width="14"/>
+          <circle cx="60" cy="60" r="50" fill="none" stroke="#1B2E4A" stroke-width="14"
+                  stroke-linecap="butt" stroke-dasharray="0 314" id="donutCap"
+                  transform="rotate(-90 60 60)" class="donut-seg"/>
+          <circle cx="60" cy="60" r="50" fill="none" stroke="#B8860B" stroke-width="14"
+                  stroke-linecap="butt" stroke-dasharray="0 314" id="donutInt"
+                  transform="rotate(-90 60 60)" class="donut-seg"/>
+          <circle cx="60" cy="60" r="50" fill="none" stroke="#0D9488" stroke-width="14"
+                  stroke-linecap="butt" stroke-dasharray="0 314" id="donutIns"
+                  transform="rotate(-90 60 60)" class="donut-seg"/>
+          <text x="60" y="57" text-anchor="middle" class="donut-c1">Total</text>
+          <text x="60" y="73" text-anchor="middle" id="donutCenter" class="donut-c2">—</text>
+        </svg>
+        <div class="donut-legend">
+          <div class="dleg"><span class="dleg-dot" style="background:#1B2E4A"></span><span class="dleg-name">Capital</span><strong class="dleg-amt" id="barCapA">—</strong></div>
+          <div class="dleg"><span class="dleg-dot" style="background:#B8860B"></span><span class="dleg-name">Intereses</span><strong class="dleg-amt" id="barIntA">—</strong></div>
+          <div class="dleg" id="barInsR" style="display:none"><span class="dleg-dot" style="background:#0D9488"></span><span class="dleg-name">Seguros</span><strong class="dleg-amt" id="barInsA">—</strong></div>
         </div>
       </div>
 
