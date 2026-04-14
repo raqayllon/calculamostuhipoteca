@@ -19,8 +19,6 @@ function updateRange(rangeId, displayId, decimals, suffix) {
   const el = R(rangeId);
   el.addEventListener('input', () => {
     R(displayId).textContent = parseFloat(el.value).toFixed(decimals).replace('.', ',') + suffix;
-    // live-recalc only if results already visible
-    if (R('results').classList.contains('visible')) calculate();
   });
 }
 
@@ -30,31 +28,13 @@ updateRange('openFee',  'openFeeVal', 1, ' %');
 updateRange('discount', 'discountVal',2, ' %');
 
 /* ── Auto-format money inputs ───────────────────────── */
-let _liveT;
 ['price', 'down', 'homeInsCost', 'lifeInsCost'].forEach(id => {
   R(id).addEventListener('blur', function () { fmtInput(this); });
   R(id).addEventListener('keydown', function (e) {
     if (e.key === 'Enter') { fmtInput(this); calculate(); }
   });
-  R(id).addEventListener('input', function () {
-    clearTimeout(_liveT);
-    _liveT = setTimeout(() => {
-      if (R('results').classList.contains('visible')) calculate();
-    }, 350);
-  });
 });
 
-/* ── Region / type selects → live recalc ───────────── */
-['homeType', 'region', 'mortgageType'].forEach(id => {
-  R(id).addEventListener('change', () => {
-    if (R('results').classList.contains('visible')) calculate();
-  });
-});
-['homeIns', 'lifeIns'].forEach(id => {
-  R(id).addEventListener('change', () => {
-    if (R('results').classList.contains('visible')) calculate();
-  });
-});
 
 /* ── Collapse ───────────────────────────────────────── */
 function toggleC(id) {
@@ -149,8 +129,9 @@ function calculate() {
   const costs  = tax + notary + gest + tas + openAmt;
 
   /* ── Render results ── */
-  R('monthly').textContent  = fmt(Math.round(pmt)) + ' €/mes';
-  R('termSub').textContent  = `durante ${years} años · TIN ${(tin * 100).toFixed(2).replace('.', ',')}%`;
+  const totalMonthly = pmt + moIns;
+  R('monthly').textContent  = fmt(Math.round(totalMonthly)) + ' €/mes';
+  R('termSub').textContent  = `durante ${years} años · TIN ${(tin * 100).toFixed(2).replace('.', ',')}%` + (moIns > 0 ? ' · incl. seguros' : '');
   R('rLoan').textContent    = fmt(loan) + ' €';
   R('rTIN').textContent     = (tin * 100).toFixed(2).replace('.', ',') + ' %';
   R('rTAE').textContent     = (tae * 100).toFixed(2).replace('.', ',') + ' %';
