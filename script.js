@@ -129,9 +129,8 @@ function calculate() {
   const costs  = tax + notary + gest + tas + openAmt;
 
   /* ── Render results ── */
-  const totalMonthly = pmt + moIns;
-  R('monthly').textContent  = fmt(Math.round(totalMonthly)) + ' €/mes';
-  R('termSub').textContent  = `durante ${years} años · TIN ${(tin * 100).toFixed(2).replace('.', ',')}%` + (moIns > 0 ? ' · incl. seguros' : '');
+  R('monthly').textContent  = fmt(Math.round(pmt)) + ' €/mes';
+  R('termSub').textContent  = `durante ${years} años · TIN ${(tin * 100).toFixed(2).replace('.', ',')}%`;
   R('rLoan').textContent    = fmt(loan) + ' €';
   R('rTIN').textContent     = (tin * 100).toFixed(2).replace('.', ',') + ' %';
   R('rTAE').textContent     = (tae * 100).toFixed(2).replace('.', ',') + ' %';
@@ -220,5 +219,5 @@ function toggleA() { R('amortW').classList.toggle('open'); }
 window.toggleA = toggleA;
 
 /* ── Auto-calculate with market defaults on load ─── */
-document.addEventListener('DOMContentLoaded', calculate);
+// Not auto-calculated — user fills in their data and clicks Calcular
 
